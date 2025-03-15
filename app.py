@@ -29,7 +29,7 @@ st.markdown(html_content, unsafe_allow_html=True)
 
 # Initializing session state for the selected model and conversation history
 if 'selected_model' not in st.session_state:
-    st.session_state.selected_model = "gemini-1.5-flash"  # Default model
+    st.session_state.selected_model = "gemini-2.0-flash"  # Default model
 
 if 'conversation' not in st.session_state:
     st.session_state.conversation = []
@@ -43,7 +43,11 @@ def add_to_conversation(prompt, response):
     st.session_state.conversation.append({"prompt": prompt, "response": response})
 
 # Model to be chosen for running the app
-selected_model = st.sidebar.selectbox(label='Choose your model',options=['gemini-2.0-flash','gemini-1.5-flash','gemini-1.5-pro'],key='model_selector')
+selected_model = st.sidebar.selectbox(
+    label='Choose your model',
+    options=['gemini-2.0-flash','gemini-1.5-flash','gemini-1.5-pro'],
+    key='model_selector'
+)
 
 # Checking if the model has been changed by the end user
 if selected_model != st.session_state.selected_model:
