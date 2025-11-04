@@ -45,7 +45,7 @@ def add_to_conversation(prompt, response):
 # Model to be chosen for running the app
 selected_model = st.sidebar.selectbox(
     label='Choose your model',
-    options=['gemini-2.0-flash','gemini-2.5-pro-experimental','gemini-1.5-flash','gemini-1.5-pro'],
+    options=['gemini-2.5-pro','gemini-2.5-flash','gemini-2.5-flash-lite','gemini-2.0-flash','gemini-2.0-flash-lite'],
     key='model_selector'
 )
 
@@ -66,11 +66,11 @@ temp = st.sidebar.select_slider('Temperature, *(increasing this will get you mor
 
 # Defining which model to be used and storing it in a variable which will then be fed into the api
 # model_to_use = 'gemini-1.0-pro' if selected_model == 'gemini-1.0-pro (supports text only)' else selected_model
-model_to_use = 'gemini-2.5-pro-exp-03-25' if selected_model == 'gemini-2.5-pro-experimental' else selected_model
+model_to_use = 'gemini-2.5-pro' if selected_model == 'gemini-2.5-pro' else selected_model
 # model_to_use = selected_model
 
 # This is the video file which needs to be uploaded to a temp path so that it can be fed into the gemini api,
-# works only when gemini-2.5-pro-experimental, gemini-2.0-flash, gemini-1.5-flash or gemini-1.5-pro is selected
+# works only when gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite, gemini-2.0-flash or gemini-2.0-flash-lite is selected
 # if model_to_use != 'gemini-1.0-pro':
 vfile = st.sidebar.file_uploader("Upload your workout video for suggestion")
 
@@ -97,14 +97,14 @@ if vfile is not None:
 
 #Prompt list below
             
-# Starting prompt for gemini-2.5-pro-experimental, gemini-2.0-flash, gemini-1.5-flash and gemini-1.5-pro          
+# Starting prompt for gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite, gemini-2.0-flash or gemini-2.0-flash-lite          
 start_prompt ="Introduce yourself as a fitness buddy"
 
 # # Starting prompt for gemini-1.0-pro 
 # start_prompt2 = "Introduce yourself as a fitness buddy in short and crisp manner"
 
 
-# Prompt for gemini-2.5-pro-experimental, gemini-2.0-flash, gemini-1.5-flash and gemini-1.5-pro
+# Prompt for gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite, gemini-2.0-flash or gemini-2.0-flash-lite
 p4 = """
 Hi Gemini! You are a Gym instructor and you need to give suggestions based on which type of exercise the person is doing or asking about.
 The person may give a video of their workout and ask suggestion about it or they might just ask about an exercise without giving the workout video,
