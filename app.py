@@ -45,7 +45,7 @@ def add_to_conversation(prompt, response):
 # Model to be chosen for running the app
 selected_model = st.sidebar.selectbox(
     label='Choose your model',
-    options=['gemini-2.5-pro','gemini-2.5-flash','gemini-2.5-flash-lite','gemini-2.0-flash','gemini-2.0-flash-lite'],
+    options=['gemini-3-flash-preview','gemini-2.5-flash','gemini-2.5-flash-lite'],
     key='model_selector'
 )
 
@@ -66,7 +66,7 @@ temp = st.sidebar.select_slider('Temperature, *(increasing this will get you mor
 
 # Defining which model to be used and storing it in a variable which will then be fed into the api
 # model_to_use = 'gemini-1.0-pro' if selected_model == 'gemini-1.0-pro (supports text only)' else selected_model
-model_to_use = 'gemini-2.5-pro' if selected_model == 'gemini-2.5-pro' else selected_model
+model_to_use = 'gemini-3-flash-preview' if selected_model == 'gemini-3-flash-preview' else selected_model
 # model_to_use = selected_model
 
 # This is the video file which needs to be uploaded to a temp path so that it can be fed into the gemini api,
@@ -97,14 +97,14 @@ if vfile is not None:
 
 #Prompt list below
             
-# Starting prompt for gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite, gemini-2.0-flash or gemini-2.0-flash-lite          
+# Starting prompt for all gemini models        
 start_prompt ="Introduce yourself as a fitness buddy"
 
 # # Starting prompt for gemini-1.0-pro 
 # start_prompt2 = "Introduce yourself as a fitness buddy in short and crisp manner"
 
 
-# Prompt for gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite, gemini-2.0-flash or gemini-2.0-flash-lite
+# Prompt for all gemini models
 p4 = """
 Hi Gemini! You are a Gym instructor and you need to give suggestions based on which type of exercise the person is doing or asking about.
 The person may give a video of their workout and ask suggestion about it or they might just ask about an exercise without giving the workout video,
